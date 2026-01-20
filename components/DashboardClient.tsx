@@ -1,5 +1,6 @@
 "use client";
-
+import Link from "next/link";
+import { Play } from "lucide-react";
 import { useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,7 @@ import {
 import VendorTable from "@/components/VendorTable";
 import IncidentTimeline from "@/components/IncidentTimeline";
 import { useRealtimeVendors, useRealtimeIncidents } from "@/hooks/use-realtime";
-import type { Vendor } from "@/lib/actions/vendors";
+import type { Vendor } from "@/lib/types/vendor";
 import type { IncidentWithVendor } from "@/lib/actions/incidents";
 import { signOut } from "@/lib/actions/auth";
 import { cn } from "@/lib/utils";
@@ -94,6 +95,12 @@ export default function DashboardClient({
             </div>
 
             <div className="flex items-center gap-4">
+              <Link href="/simulation">
+              <Button variant="outline" size="sm" className="gap-2">
+                  <Play className="h-4 w-4" />
+                  Simulation Mode
+                </Button>
+              </Link>
               <div className="flex items-center gap-2 text-sm">
                 <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
                 <span className="text-muted-foreground">Live</span>
